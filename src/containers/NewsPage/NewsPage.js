@@ -17,7 +17,7 @@ const NewsPage = props => {
 
     useEffect(() => {
         dispatch(fetchComments(props.match.params.id));
-    }, [props.match.params.id]);
+    }, [props.match.params.id, dispatch]);
 
     useEffect(() => {
         dispatch(fetchSingleNews(props.match.params.id));
@@ -49,6 +49,7 @@ const NewsPage = props => {
         dispatch(fetchComments(props.match.params.id));
     };
 
+    console.log(singleNews);
     let commentFeed;
     if (comments.length === 0) {
         commentFeed = (
@@ -69,9 +70,9 @@ const NewsPage = props => {
 
     return (
         <div className="container">
-            <h3>{singleNews[0].title}</h3>
-            <span>{singleNews[0].timedate.substr(0, 19).replace('T', ' ')}</span>
-            <p>{singleNews[0].news_text}</p>
+            {singleNews[0] && <h3>{singleNews[0].title}</h3>}
+            {singleNews[0] && <span>{singleNews[0].timedate.substr(0, 19).replace('T', ' ')}</span>}
+            {singleNews[0] && <p>{singleNews[0].news_text}</p>}
             <h4>Comments</h4>
             {commentFeed}
             <h4>Add comment</h4>

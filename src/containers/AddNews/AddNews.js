@@ -7,9 +7,11 @@ import './AddNews.css';
 const AddNews = props => {
     const [value, setValue] = useState({
         title: '',
-        text: '',
+        news_text: '',
         image: ''
     });
+
+    const inputRef = useRef();
 
     const dispatch = useDispatch();
 
@@ -38,7 +40,7 @@ const AddNews = props => {
                 formData.append(key, value[key]);
             });
             dispatch(postNews(formData));
-            setValue({title: '', text: '', image: ''});
+            setValue({title: '', news_text: '', image: ''});
             props.history.push({
                 pathname: '/'
             });
@@ -50,7 +52,7 @@ const AddNews = props => {
     const clear = () => {
         const newValue = {
             title: '',
-            text: '',
+            news_text: '',
             image: ''
         };
         setValue(newValue);
@@ -59,45 +61,44 @@ const AddNews = props => {
         });
     };
 
-    const inputRef = useRef();
 
     return (
         <div className="container">
-
-            <h2>Add new post</h2>
-            <p className="inputDescription">Title:
-                <input
-                    placeholder="enter title"
-                    name="title"
-                    className="field"
-                    value={value.title}
-                    onChange={onChangeHandler}
-                /></p>
-            <p className="inputDescription">Content:
-                <textarea
-                    placeholder="enter content"
-                    name="text"
-                    className="textarea"
-                    value={value.text}
-                    onChange={onChangeHandler}
-                /></p>
-            <p className="inputDescription">Image:
-                <input type="file"
-                       name="image"
-                       className="field"
-                       ref={inputRef}
-                       onChange={fileChangeHandler}
-                /></p>
-            <button type="button"
-                    className="addBtn"
-                    onClick={sendMessage}
-            >Save
-            </button>
-            <button type="button"
-                    className="addBtn"
-                    onClick={clear}
-            ><Link className="edit" to='/'>Return</Link></button>
-
+                <h2>Add new post</h2>
+            <form>
+                <p className="inputDescription">Title:
+                    <input
+                        placeholder="enter title"
+                        name="title"
+                        className="field"
+                        value={value.title}
+                        onChange={onChangeHandler}
+                    /></p>
+                <p className="inputDescription">Content:
+                    <textarea
+                        placeholder="enter content"
+                        name="text"
+                        className="textarea"
+                        value={value.news_text}
+                        onChange={onChangeHandler}
+                    /></p>
+                <p className="inputDescription">Image:
+                    <input type="file"
+                           name="image"
+                           className="field"
+                           ref={inputRef}
+                           onChange={fileChangeHandler}
+                    /></p>
+                <button type="submit"
+                        className="addBtn"
+                        onClick={sendMessage}
+                >Save
+                </button>
+                <button type="button"
+                        className="addBtn"
+                        onClick={clear}
+                ><Link className="edit" to='/'>Return</Link></button>
+            </form>
         </div>
     );
 };
