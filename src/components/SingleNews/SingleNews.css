@@ -2,4 +2,36 @@
     border: 1px solid dodgerblue;
     border-radius: 5px;
     padding: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.newsImg {
+    height: 120px;
+    width: auto;
+    margin-right: 30px;
+}
+
+.newsBtn {
+    margin: 0 30px;
+    background: dodgerblue;
+    color: white;
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 0 rgba(50, 50, 50, 0.75);
+}
+
+.newsBtn:hover {
+    background: #48a1fc;
+}
+
+.newsBtn:active {
+    box-shadow: inset 2px 2px 5px 0 rgba(50, 50, 50, 0.75);
+}
+
+.newsTitle {
+    margin-top: 0;
 }

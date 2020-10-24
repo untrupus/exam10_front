@@ -1,0 +1,17 @@
+.field {
+    display: block;
+    margin-bottom: 15px;
+    padding: 5px;
+    width: 300px;
+    margin-top: 10px;
+}
+
+.textarea {
+    display: block;
+    resize: none;
+    width: 500px;
+    height: 100px;
+    margin-top: 10px;
+}
+
+
